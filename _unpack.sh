@@ -45,6 +45,36 @@ for part in rootfs app; do
     out_dir="${bin_file%.bin}"  # strip .bin for output folder
     
     ubireader_extract_images "$bin_file" -o tmp
-	unsquashfs -d "$out_dir" tmp/"$bin_file"/*
+	
+	#unsquashfs -d "$out_dir" tmp/"$bin_file"/*
+	#ubireader_extract_files -o "$out_dir" tmp/"$bin_file"/*
+    
+    for f in tmp/"$bin_file"/*; do
+        if [ -f "$f" ]; then
+            # detect file type
+            ftype=$(file -b "$f")
+
+            if [[ "$ftype" == *"Squashfs"* ]]; then
+                echo "Extracting SquashFS from $f..."
+                unsquashfs -d "${out_dir}.s" "$f"
+                break
+            elif [[ "$ftype" == *"UBI"* || "$ftype" == *"UBIFS"* ]]; then
+                echo "Extracting UBIFS from $f..."                
+                ubireader_extract_files -o "${out_dir}.u" "$f"
+                file_info=$(ubireader_display_info "$f")
+                min_io_size=$(echo "$file_info" | awk '/min_io_size:/ {print $2}')
+                leb_size=$(echo "$file_info" | awk '/leb_size:/ {print $2}')
+                max_leb_cnt=$(echo "$file_info" | awk '/max_leb_cnt:/ {print $2}')
+                echo "min_io_size=${min_io_size}" > "${out_dir}.ini"
+                echo "leb_size=${leb_size}" >> "${out_dir}.ini"
+                echo "max_leb_cnt=${max_leb_cnt}" >> "${out_dir}.ini"
+                break
+            else
+                echo "Unknown filesystem type in $f ($ftype)"
+                exit 1
+            fi
+        fi
+    done
+    
     rm -rf tmp
 done
