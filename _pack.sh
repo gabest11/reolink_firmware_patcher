@@ -37,34 +37,53 @@ EOF
     echo "Config file '${base_name}.cfg' created."
 }
 
-build_ubifs() {
+build_ubi() {
     local dir="$1"
     local vol_name="$2"
     local bin_file="$3"
 
     local sqsh_file="${dir}.sqsh"
     local ubifs_file="${dir}.ubifs"
+    local ubi_file="${dir}.ubi"
 
     # Remove old files
-    rm -f "$sqsh_file" "$ubifs_file"
+    rm -f "$sqsh_file" "$ubifs_file" "$ubi_file"
 
-    # Create squashfs
-    mksquashfs "$dir/" "$sqsh_file" -comp xz -b 262144 -noappend
+    if [[ -d "${dir}.s" ]]; then
+        echo "Building SquashFS from ${dir}.s"
+        mksquashfs "${dir}.s/" "$sqsh_file" -comp xz -b 262144 -noappend
+        fs_file=$sqsh_file
+    elif [[ -d "${dir}.u" ]]; then
+        echo "Building UBIFS from ${dir}.u"
+        ini_file="${dir}.ini"
+        min_io_size=$(grep -E '^min_io_size=' "$ini_file" | cut -d= -f2)
+        leb_size=$(grep -E '^leb_size=' "$ini_file" | cut -d= -f2)
+        max_leb_cnt=$(grep -E '^max_leb_cnt=' "$ini_file" | cut -d= -f2)
+        if [[ -z "$min_io_size" || -z "$leb_size" ]]; then
+            echo "Error: min_io_size or leb_size missing in $ini_file" >&2
+            exit 1
+        fi
+        sudo mkfs.ubifs -r "${dir}.u/" -o "$ubifs_file" -m "$min_io_size" -e "$leb_size" -c "$max_leb_cnt"
+        fs_file=$ubifs_file
+    else
+        echo "Error: neither ${dir}.s nor ${dir}.u exist" >&2
+        exit 1        
+    fi
 
     # Generate config
-    generate_config "$sqsh_file" "$vol_name"
+    generate_config "$fs_file" "$vol_name"
 
-    # Get ubinize args and create UBIFS
+    # Get ubinize args and create UBI
     read m p < <(get_ubinize_args "$bin_file")
-    sudo ubinize -o "$ubifs_file" -m "$m" -p "$p" "${dir}.cfg"
+    sudo ubinize -o "$ubi_file" -m "$m" -p "$p" "${dir}.cfg"
 }
 
 repack_partition() {
     local firmware="$1"
     local section="$2"
-    local ubifs_file="$3"
+    local ubi_file="$3"
 
-    pakler "$firmware" -r -n "$section" -f "$ubifs_file" -o tmp.pak
+    pakler "$firmware" -r -n "$section" -f "$ubi_file" -o tmp.pak
     mv tmp.pak "$firmware"
 }
 
@@ -112,23 +131,24 @@ for part in rootfs app; do
     sections[$part]=$(echo "$info" | awk -v n="$part" '$0 ~ "Section" && $0 ~ n {print $2}')
 done
 
+# Just cd into it; do not delete
 cd "$folder_name" || { echo "Directory $folder_name does not exist."; exit 1; }
 
-# Build UBIFS for each partition
+# Build UBI for each partition
 for part in rootfs app; do
     section="${sections[$part]}"
     bin_file=$(printf "%02d_%s.bin" "$section" "$part")
     dir_name="${bin_file%.bin}"
-    build_ubifs "$dir_name" "$part" "$bin_file"
+    build_ubi "$dir_name" "$part" "$bin_file"
 done
 
 # Set ownership
 OWNER=${SUDO_USER:-$USER}
-sudo chown "$OWNER":"$(id -gn "$OWNER")" *.ubifs
+sudo chown "$OWNER":"$(id -gn "$OWNER")" *.ubi
 
 # Repack firmware
 for part in rootfs app; do
     section="${sections[$part]}"
-    ubifs_file=$(printf "%02d_%s.ubifs" "$section" "$part")
-    repack_partition "../$firmware_new" "$section" "$ubifs_file"
+    ubi_file=$(printf "%02d_%s.ubi" "$section" "$part")
+    repack_partition "../$firmware_new" "$section" "$ubi_file"
 done
