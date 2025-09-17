@@ -2,7 +2,37 @@
 
 ### Unpack
 
+./_unpack.sh <firmware.pak>
+
+You will find the files under the directory according to the build number. Edit the files you want. 
+
+The nginx config files are a decoy, the executable called `device` creates it under `/mnt/tmp`, you have directly edit this binary file, just make sure it stays the same size.
+
+To enable sd card access in the browser, change this:
+
+        location /downloadfile/ {
+            internal;
+            limit_conn one 1;
+            limit_rate 1024k;
+            alias /mnt/sda/;
+        }
+
+To this:
+
+        location /downloadfile/ {
+            autoindex on;
+            autoindex_localtime on;
+            alias /mnt/sda/;
+                                       
+        }
+
+Add as many spaces you need to balance the missing characters.
+
+To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
+
 ### Pack
+
+./_pack.sh <firmware.pak>
 
 ### Unbricking
 
@@ -10,7 +40,7 @@ I am not responsible for any damages. If you brick your device, you have to take
 
 This is an example to unbrick E1 Zoom, every camera has different partition definition. You can find it in the boot log.
 
-Downlaod and split the firmware file into parts, use pakler or https://github.com/AT0myks/reolink-fw. 
+Download and split the firmware file into parts, use pakler or https://github.com/AT0myks/reolink-fw. 
 Find rootfs and app and convert them from ubi to squashfs with ubireader_extract_images. 
 Start a TFTP server in the directory.
 Connect to the camera and mash ctrl+c right after boot, it will give you a command prompt.
