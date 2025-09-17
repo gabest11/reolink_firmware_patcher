@@ -19,7 +19,7 @@ To enable sd card access in the browser, change this:
             alias /mnt/sda/;
         }
 
-To this: (add as many spaces you need to balance the missing characters)
+To this: (add as many spaces as needed to balance the missing characters)
 
         location /downloadfile/ {
             autoindex on;
