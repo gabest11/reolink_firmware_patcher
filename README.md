@@ -8,7 +8,7 @@ Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
 You will find the files under the directory according to the build number. Edit the files you want. 
 
-The nginx config files are a decoy, the executable called `device` in the `app` partition creates it under `/mnt/tmp`, you have directly edit this binary file, just make sure it stays the same size. I used Far Manager, it can handle editing and saving binary files as text.
+The nginx config files are a decoy, the executable called `device` in the `app` partition creates it under `/mnt/tmp`, you have directly edit this binary file, it's a big ascii blob in it, just make sure it stays the same size. I used Far Manager, it can handle editing and saving binary files as text.
 
 To enable sd card access in the browser, change this:
 
