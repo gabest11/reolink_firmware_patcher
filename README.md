@@ -28,7 +28,7 @@ To this:
                                        
         }
 
-Add as many spaces you need to balance the missing characters.
+Add as many spaces you need to balance the missing characters. Then you will be able to just click on any file and view it. It's a lot faster this way.
 
 To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
