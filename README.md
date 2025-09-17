@@ -47,7 +47,7 @@ I am not responsible for any damages. If you brick your device, you have to take
 This is an example to unbrick E1 Zoom, every camera has different partition definition. You can find it in the boot log.
 
 Download and split the firmware file into parts, use [pakler](https://pypi.org/project/pakler/) or [reolink-fw](https://github.com/AT0myks/reolink-fw). 
-Find rootfs and app and convert them from UBI to squashfs with ubireader_extract_images. Do not directly write UBI with ubi write.
+Find `rootfs` and `app` and convert them from UBI to squashfs with `ubireader_extract_images`. Do not directly write UBI with `ubi write`.
 Start a TFTP server in the directory.
 Connect to the camera and mash ctrl+c right after boot, it will give you a command prompt.
 
