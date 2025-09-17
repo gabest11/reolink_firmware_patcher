@@ -44,7 +44,7 @@ This will create `<firmware_patched.pak>` where the build number is increased by
 
 I am not responsible for any damages. If you brick your device, you have to take it apart and find the UART solder points and use U-Boot commands to restore it.
 
-This is an example to unbrick E1 Zoom, every camera has different partition definition. You can find it in the boot log. GND/TX/RX are on the inner side for this camera, next to the sensor.
+This is an example to unbrick E1 Zoom, every camera has different partition definition. You can find it in the boot log. For this camera the GND/TX/RX points are next to the sensor, on the other side.
 
 Download and split the firmware file into parts, use [pakler](https://pypi.org/project/pakler/) or [reolink-fw](https://github.com/AT0myks/reolink-fw). 
 Find `rootfs` and `app` and convert them from UBI to squashfs with `ubireader_extract_images`. Do not directly write UBI with `ubi write`.
