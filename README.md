@@ -66,6 +66,6 @@ Connect to the camera and mash ctrl+c right after boot, it will give you a comma
     ubi create app
     ubi write 0x2000000 app 0x${filesize}
 
-There may be other partitions, restore whichever you messed with, but not all are squashfs.
+There may be other partitions, restore whichever you messed with, but not all are squashfs. As long as your bootloader is intact, you are safe.
 
 
