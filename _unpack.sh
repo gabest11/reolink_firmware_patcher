@@ -11,7 +11,9 @@ pak_file="$1"
 # extract folder name from pak filename: take the number after the first dot
 folder_name=$(echo "$pak_file" | sed -E 's/^[^.]*\.([0-9]+).*$/\1/')
 
-rm -rf "$folder_name"
+if [ -d "$folder_name" ]; then
+    rm -rf "$folder_name"
+fi
 
 # extract pak
 pakler "$pak_file" -e -d "$folder_name"
