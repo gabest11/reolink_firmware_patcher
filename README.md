@@ -1,8 +1,10 @@
 # Reolink Firmware Patcher
 
+Requirements: pakler, ubi_reader (pip install ...)
+
 ### Unpack
 
-./_unpack.sh <firmware.pak>
+`./_unpack.sh <firmware.pak>`
 
 You will find the files under the directory according to the build number. Edit the files you want. 
 
@@ -32,9 +34,9 @@ To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
 ### Pack
 
-./_pack.sh <firmware.pak>
+`./_pack.sh <firmware.pak>`
 
-This will create <firmware_patched.pak> where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continously update it with the trick.
+This will create `<firmware_patched.pak>` where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continously update it with the trick.
 
 ### Unbricking
 
