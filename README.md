@@ -2,6 +2,8 @@
 
 Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
+Only squashfs type partitions are supported.
+
 ### Unpack
 
 `./_unpack.sh <firmware.pak>`
