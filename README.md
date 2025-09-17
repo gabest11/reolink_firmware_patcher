@@ -2,7 +2,7 @@
 
 Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
-Only squashfs type partitions are supported. I will add ubifs later. Doorbell has that.
+Only squashfs type partitions are supported. I will add ubifs later. Doorbell has that for example.
 
 ### Unpack
 
