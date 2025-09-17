@@ -1,6 +1,6 @@
 # Reolink Firmware Patcher
 
-Requirements: pakler, ubi_reader (pip install ...)
+Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
 ### Unpack
 
