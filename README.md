@@ -32,6 +32,8 @@ Add as many spaces you need to balance the missing characters.
 
 To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
+You can try `telnetd &`, too. But Busybox in my firmware was not compiled with it. (busybox --list)
+
 ### Pack
 
 `./_pack.sh <firmware.pak>`
