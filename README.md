@@ -34,6 +34,8 @@ To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
 ./_pack.sh <firmware.pak>
 
+This will create <firmware_patched.pak> where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continously update it with the trick.
+
 ### Unbricking
 
 I am not responsible for any damages. If you brick your device, you have to take it apart and find the UART solder points and use U-Boot commands to restore it.
