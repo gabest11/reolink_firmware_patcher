@@ -131,7 +131,6 @@ for part in rootfs app; do
     sections[$part]=$(echo "$info" | awk -v n="$part" '$0 ~ "Section" && $0 ~ n {print $2}')
 done
 
-# Just cd into it; do not delete
 cd "$folder_name" || { echo "Directory $folder_name does not exist."; exit 1; }
 
 # Build UBI for each partition
