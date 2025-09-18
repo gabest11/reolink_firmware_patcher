@@ -41,15 +41,12 @@ for part in rootfs app; do
     read section name len_hex len_dec <<< $(get_section_and_len "$part")
     echo "$part: section=$section name=$name len_hex=$len_hex len_dec=$len_dec"
 
-    bin_file=$(printf "%02d_%s.bin" "$section" "$part")
+	bin_file=$(printf "%02d_%s.bin" "$section" "$part")
     out_dir="${bin_file%.bin}"  # strip .bin for output folder
-    
-    ubireader_extract_images "$bin_file" -o tmp
-	
-	#unsquashfs -d "$out_dir" tmp/"$bin_file"/*
-	#ubireader_extract_files -o "$out_dir" tmp/"$bin_file"/*
-    
-    for f in tmp/"$bin_file"/*; do
+
+    ubireader_extract_images "$bin_file" -o __tmp__
+
+    for f in __tmp__/"$bin_file"/*; do
         if [ -f "$f" ]; then
             # detect file type
             ftype=$(file -b "$f")
@@ -76,5 +73,5 @@ for part in rootfs app; do
         fi
     done
     
-    rm -rf tmp
+    rm -rf __tmp__
 done
