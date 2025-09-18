@@ -30,6 +30,12 @@ To this: (add as many spaces as needed to balance the missing characters)
 
 Then you will be able to just click on any file and view it. It's a lot faster this way.
 
+Or if you want to add more, remove all the spaces, there are plenty.
+
+        location /downloadfile/ {internal;limit_conn one 1;limit_rate 1024k;alias /mnt/sda/;}
+        location /downloadfile/html/ {alias /mnt/sda/; autoindex on; autoindex_localtime on;}
+        location /downloadfile/js/ {alias /mnt/sda/; autoindex on; autoindex_localtime on; autoindex_format json;}
+
 To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
 You can try `telnetd &`, too. But Busybox in my firmware was not compiled with it. (busybox --list)
