@@ -2,7 +2,7 @@
 
 Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
-Tested with E1 Zoom 5MP and 8MP. Never try it, if there is no LAN and serial connection on the board somewhere.
+Tested with E1 Zoom 5MP and 8MP. Don't try if there is no LAN and serial connection on the board somewhere.
 
 ### Unpack
 
