@@ -54,6 +54,8 @@ build_ubi() {
         mksquashfs "${dir}.s/" "$sqsh_file" -comp xz -b 262144 -noappend
         fs_file=$sqsh_file
     elif [[ -d "${dir}.u" ]]; then
+        echo "Error: sorry, this does not work currenty" >&2
+        exit 1    
         echo "Building UBIFS from ${dir}.u"
         ini_file="${dir}.ini"
         min_io_size=$(grep -E '^min_io_size=' "$ini_file" | cut -d= -f2)
