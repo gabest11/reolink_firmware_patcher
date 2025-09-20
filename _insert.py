@@ -11,7 +11,6 @@ def insert_with_padding(input_file, output_file, start_offset, end_offset, N=0x8
     start_offset = start_offset * (N + P) // N
     end_offset   = end_offset   * (N + P) // N
 
-    print(f"Inserting at offset 0x{start_offset:X} (decimal {start_offset})")
     print(f"Insertion region: 0x{start_offset:X} - 0x{end_offset:X} "
           f"(length {end_offset - start_offset} bytes)")
 
