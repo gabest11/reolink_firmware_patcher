@@ -95,6 +95,7 @@ Real insertation will happen at 0x770000 and 0x2970000, adjusted for NAND's extr
 
     Mtd_part name="rootfs"         mtd="/dev/mtd12"      a=0x00700000  start=0x00700000  len=0x02000000
     Mtd_part name="app"            mtd="/dev/mtd12"      a=0x02700000  start=0x02700000  len=0x01500000
+    Mtd_part name="para"           mtd="/dev/mtd12"      a=0x03c00000  start=0x03c00000  len=0x00800000
 
     0x700000 * 0x880 / 0x800 => 0x770000
     0x2700000 * 0x880 / 0x800 => 0x2970000
