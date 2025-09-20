@@ -101,3 +101,5 @@ Real insertation will happen at 0x770000 and 0x2970000, adjusted for NAND's extr
     0x2700000 * 0x880 / 0x800 => 0x2970000
 
 Write it back to the NAND.
+
+_extract.py is also provided to verify insertation.
