@@ -6,6 +6,10 @@ def insert_with_padding(input_file, output_file, start_offset, end_offset, N=0x8
         print(f"ERROR: start_offset 0x{start_offset:X} (decimal {start_offset}) "
               f"is not a multiple of N (0x{N:X}).")
         sys.exit(1)
+    if end_offset % N != 0:
+        print(f"ERROR: end_offset 0x{end_offset:X} (decimal {end_offset}) "
+              f"is not a multiple of N (0x{N:X}).")
+        sys.exit(1)
 
     # Adjust offsets with integer arithmetic
     start_offset = start_offset * (N + P) // N
