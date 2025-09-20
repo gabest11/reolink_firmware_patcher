@@ -54,7 +54,11 @@ This will create `<firmware_patched.pak>` where the build number is increased by
 
 I am not responsible for any damages. If you brick your device, you have to take it apart and find the UART solder points and use U-Boot commands to restore it.
 
-This is an example to unbrick E1 Zoom (GND/TX/RX are next to the sensor). Every camera has different partition definition. You can find it in the boot log.
+#### This is an example to unbrick **E1 Zoom**
+
+GND/TX/RX are next to the sensor. 
+
+Every camera has different partition definition. You can find it in the boot log.
 
 Download and split the firmware file into parts, use [pakler](https://pypi.org/project/pakler/) or [reolink-fw](https://github.com/AT0myks/reolink-fw). 
 Find `rootfs` and `app` and convert them from UBI to squashfs with `ubireader_extract_images`. Do not directly write UBI with `ubi write`.
@@ -78,4 +82,18 @@ Connect to the camera and mash ctrl+c right after boot, it will give you a comma
 
 There may be other partitions, restore whichever you messed with, but not all are squashfs. As long as your bootloader is intact, you are safe.
 
+#### Another example to unbrick the Doorbell Wifi/PEO (not with the battery) by rewriting the NAND with a programmer.
 
+Read the contents of the NAND into a file (firmware.bin). It sould be 142606336 bytes.
+
+Extract 06_rootfs.bin and 07_app.bin from the firmware update. These are the raw UBI files needed, do no convert them.
+
+    python3 _insert.py 06_rootfs.bin firmware.bin 0x770000 0x2970000 0x800 0x80
+    python3 _insert.py 07_app.bin firmware.bin 0x2970000 0x3FC0000 0x800 0x80
+
+0x770000 and 0x2970000 are the offsets in the firmware adjusted by NAND's extra data. Every 0x800 bytes you need 0x80 additional. _insert.py will take care of it.
+
+    0x700000 * 0x880 / 0x800 => 0x770000
+    0x2700000 * 0x880 / 0x800 => 0x2970000
+
+Write it back to the NAND.
