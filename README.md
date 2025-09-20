@@ -88,10 +88,10 @@ Read the contents of the NAND into a file (firmware.bin). It should be 142606336
 
 Extract 06_rootfs.bin and 07_app.bin from the firmware update. These are the raw UBI files needed, do no convert them.
 
-    python3 _insert.py 06_rootfs.bin firmware.bin 0x770000 0x2970000 0x800 0x80
-    python3 _insert.py 07_app.bin firmware.bin 0x2970000 0x3FC0000 0x800 0x80
+    python3 _insert.py 06_rootfs.bin firmware.bin 0x700000 0x2700000 0x800 0x80
+    python3 _insert.py 07_app.bin firmware.bin 0x2700000 0x3C00000 0x800 0x80
 
-0x770000 and 0x2970000 are the offsets in the firmware adjusted by NAND's extra data. Every 0x800 bytes you need 0x80 additional. _insert.py will take care of it.
+Real insertation will happen at 0x770000 and 0x2970000, adjusted for NAND's extra data. Every 0x800 bytes you need 0x80 additional. _insert.py will take care of it.
 
     Mtd_part name="rootfs"         mtd="/dev/mtd12"      a=0x00700000  start=0x00700000  len=0x02000000
     Mtd_part name="app"            mtd="/dev/mtd12"      a=0x02700000  start=0x02700000  len=0x01500000
