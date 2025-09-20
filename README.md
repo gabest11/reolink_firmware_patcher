@@ -84,7 +84,7 @@ There may be other partitions, restore whichever you messed with, but not all ar
 
 #### Another example to unbrick the Doorbell Wifi/PEO (not with the battery) by rewriting the NAND with a programmer.
 
-Read the contents of the NAND into a file (firmware.bin). It sould be 142606336 bytes.
+Read the contents of the NAND into a file (firmware.bin). It should be 142606336 bytes.
 
 Extract 06_rootfs.bin and 07_app.bin from the firmware update. These are the raw UBI files needed, do no convert them.
 
