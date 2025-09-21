@@ -2,7 +2,9 @@
 
 Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
-Tested with E1 Zoom 5MP and 8MP. 
+Tested with 
+- E1 Zoom 5MP and 8MP
+- Doorbell Wifi (2024.03.07.) 
 
 Don't try if there is no LAN and serial connection on the board somewhere. If there is no serial (Doorbell) it is still possible to rescue if you can pull the partitions from the update and merge with the contents of the NAND and rewrite it with some programmer like the T48. Use a spring needle probe for WSON-8*6.
 
