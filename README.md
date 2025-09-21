@@ -2,15 +2,19 @@
 
 Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
-Tested with E1 Zoom 5MP and 8MP. 
+Tested with 
+- E1 Zoom 5MP and 8MP
+- Doorbell Wifi (2024.03.07.) 
 
 Don't try if there is no LAN and serial connection on the board somewhere. If there is no serial (Doorbell) it is still possible to rescue if you can pull the partitions from the update and merge with the contents of the NAND and rewrite it with some programmer like the T48. Use a spring needle probe for WSON-8*6.
+
+You have to run _unpack.sh, _pack.sh as root (sudo -i). So also run pip or pipx install as root.
 
 ### Unpack
 
 `./_unpack.sh <firmware.pak>`
 
-You will find the files under the directory according to the build number. Edit the files you want. 
+You will find the files under the directory named after the beginning of the pak file, until the second dot, for simplicity. Edit all the files you want. 
 
 The nginx config files are a decoy, the executable called `device` in the `app` partition creates it under `/mnt/tmp`, you have directly edit this binary file, it's a big ascii blob in it, just make sure it stays the same size. I used Far Manager, it can handle editing and saving binary files as text.
 
@@ -43,6 +47,8 @@ Or if you want to add more, remove all the spaces, there are plenty.
 To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
 You can try `telnetd &`, too. But Busybox in my firmware was not compiled with it. (busybox --list)
+
+If you want to access the sd card (/mnt/sda) from the init files, sleep a few seconds at the end of /etc/init.d/rcS and it will be available. In my experience it takes time for the starting services to mount it.
 
 ### Pack
 
