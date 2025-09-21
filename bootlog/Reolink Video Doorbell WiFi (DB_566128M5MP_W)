@@ -1,0 +1,367 @@
+Booting Linux on physical CPU 0x0
+Linux version 4.19.91 (cys@ubuntu) (gcc version 8.4.0 (Buildroot 2020.02.9-3-g58c1c2e-dirty)) #1 PREEMPT Thu Aug 7 09:29:22 CST 2025
+CPU: ARMv7 Processor [414fc091] revision 1 (ARMv7), cr=10c5387d
+CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+OF: fdt: Machine model: Novatek NA51089
+Memory policy: Data cache writeback
+OF: fdt: Reserved memory: failed to reserve memory for node 'cma0@0x01A00000': base 0x01a00000, size 0 MiB
+On node 0 totalpages: 19200
+  Normal zone: 150 pages used for memmap
+  Normal zone: 0 pages reserved
+  Normal zone: 19200 pages, LIFO batch:3
+CPU: All CPU(s) started in SVC mode.
+random: get_random_bytes called from start_kernel+0x80/0x494 with crng_init=0
+pcpu-alloc: s0 r0 d32768 u32768 alloc=1*32768
+pcpu-alloc: [0] 0 
+Built 1 zonelists, mobility grouping on.  Total pages: 19050
+Kernel command line: earlyprintk console=ttyS0,115200 rootwait nprofile_irq_duration=on root=ubi0:rootfs rootfstype=ubifs ubi.fm_autoconvert=1 init=/linuxrc   ubi.mtd=6 ro   bootts=189884,1352668 resume_addr=0x00200088 user_debug=0xff 
+Dentry cache hash table entries: 16384 (order: 4, 65536 bytes)
+Inode-cache hash table entries: 8192 (order: 3, 32768 bytes)
+Memory: 70876K/76800K available (3583K kernel code, 239K rwdata, 864K rodata, 184K init, 139K bss, 5924K reserved, 0K cma-reserved)
+Virtual kernel memory layout:
+    vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+    fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+    vmalloc : 0x85000000 - 0xff800000   (1960 MB)
+    lowmem  : 0x80000000 - 0x84b00000   (  75 MB)
+    modules : 0x7f000000 - 0x80000000   (  16 MB)
+      .text : 0x80008000 - 0x80388168   (3585 kB)
+      .init : 0x80462000 - 0x80490000   ( 184 kB)
+      .data : 0x80490000 - 0x804cbf4c   ( 240 kB)
+       .bss : 0x804cbf4c - 0x804eef14   ( 140 kB)
+SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+rcu: Preemptible hierarchical RCU implementation.
+	Tasks RCU enabled.
+NR_IRQS: 384
+L2C-310 enabling early BRESP for Cortex-A9
+L2C-310 full line of zeros enabled for Cortex-A9
+L2C-310 ID prefetch enabled, offset 1 lines
+L2C-310 dynamic clock gating enabled, standby mode enabled
+L2C-310 cache controller enabled, 8 ways, 128 kB
+L2C-310: CACHE_ID 0x410000c9, AUX_CTRL 0x76420001
+novatek_clock_init
+sched_clock: 64 bits at 120MHz, resolution 8ns, wraps every 4398046511102ns
+clocksource: arm_global_timer: mask: 0xffffffffffffffff max_cycles: 0x3759f22983, max_idle_ns: 881590413697 ns
+Switching to timer-based delay loop, resolution 8ns
+Calibrating delay loop (skipped), value calculated using timer frequency.. 240.00 BogoMIPS (lpj=1200000)
+pid_max: default: 32768 minimum: 301
+Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+CPU: Testing write buffer coherency: ok
+Setting up static identity map for 0x81c0 - 0x81fc
+rcu: Hierarchical SRCU implementation.
+devtmpfs: initialized
+VFP support v0.3: implementor 41 architecture 3 part 30 variant 9 rev 4
+NVTBOOTTS: nvt_bootts_proc_init initial success
+clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
+futex hash table entries: 256 (order: 0, 7168 bytes)
+pinctrl core: initialized pinctrl subsystem
+NET: Registered protocol family 16
+DMA: preallocated 256 KiB pool for atomic coherent allocations
+*** nvt_poweroff_setup 
+nvt_otp_module_init
+nvt_vos: 1.00.007 (Aug  7 2025 09:30:05)
+*** disable_cnn Get CNN2 Clock error
+nvt_gpio f0070000.gpio: Register nvt_gpio_probe successfully
+nvt_i2c f0220000.i2c: i2c_nvtim_busclr
+nvt_i2c f0220000.i2c: i2c_nvtim_rst_module: staus 0x10000000
+nvt_i2c f0220000.i2c: Register nvtim_i2c_probe successfully ver:1.00.015
+nvt_i2c f0350000.i2c2: i2c_nvtim_busclr
+nvt_i2c f0350000.i2c2: i2c_nvtim_rst_module: staus 0x10000000
+nvt_i2c f0350000.i2c2: Register nvtim_i2c_probe successfully ver:1.00.015
+nvt_i2c f03a0000.i2c3: i2c_nvtim_busclr
+nvt_i2c f03a0000.i2c3: i2c_nvtim_rst_module: staus 0x10000000
+nvt_i2c f03a0000.i2c3: Register nvtim_i2c_probe successfully ver:1.00.015
+clocksource: Switched to clocksource arm_global_timer
+VFS: Disk quotas dquot_6.6.0
+VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+kdrv_builtin_init init module ==========
+nvt_jpg version: 1.00.009
+kdrv_builtin_init init module ==========
+NET: Registered protocol family 2
+tcp_listen_portaddr_hash hash table entries: 256 (order: 0, 6144 bytes)
+TCP established hash table entries: 1024 (order: 0, 4096 bytes)
+TCP bind hash table entries: 1024 (order: 2, 20480 bytes)
+TCP: Hash tables configured (established 1024 bind 1024)
+UDP hash table entries: 256 (order: 1, 12288 bytes)
+UDP-Lite hash table entries: 256 (order: 1, 12288 bytes)
+Initialise system trusted keyrings
+workingset: timestamp_bits=30 max_order=15 bucket_order=0
+Key type asymmetric registered
+Asymmetric key parser 'x509' registered
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 250)
+io scheduler noop registered (default)
+f0290000.uart: ttyS0 at MMIO 0xf0290000 (irq = 5, base_baud = 1500000) is a NVT
+nvt_serial: console setup on port #0
+console [ttyS0] enabled
+f0300000.uart: ttyS1 at MMIO 0xf0300000 (irq = 6, base_baud = 3000000) is a NVT
+f0310000.uart: ttyS2 at MMIO 0xf0310000 (irq = 7, base_baud = 3000000) is a NVT
+nvt_serial: driver initialized
+zram: Added device: zram0
+nand: device found, Manufacturer ID: 0xc8, Chip ID: 0x51
+nand: ESMT GD5F1GQ4UEYIH 1GiB 3.3V
+nand: 128 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 128
+Scanning device for bad blocks
+random: fast init done
+spi_nand f0400000.nand: 4-bit mode @ 40000000 Hz
+13 fixed-partitions partitions found on MTD device spi_nand.0
+Creating 13 MTD partitions on "spi_nand.0":
+0x000000000000-0x000000040000 : "loader"
+0x000000040000-0x000000080000 : "fdt"
+0x000000080000-0x0000000c0000 : "fdt.restore"
+0x0000000c0000-0x000000240000 : "uboot"
+0x000000240000-0x000000280000 : "uenv"
+0x000000280000-0x000000700000 : "kernel"
+0x000000700000-0x000002700000 : "rootfs"
+0x000002700000-0x000003c00000 : "app"
+0x000003c00000-0x000004400000 : "para"
+0x000004400000-0x000004480000 : "sp"
+0x000004480000-0x000004500000 : "ext_para"
+0x000004500000-0x000008000000 : "download"
+0x000000000000-0x000008000000 : "all"
+nvt_rtc f0060000.rtc: rtc core: registered nvt_rtc as rtc0
+Registering SWP/SWPB emulation handler
+Loading compiled-in X.509 certificates
+ubi0: default fastmap pool size: 10
+ubi0: default fastmap WL pool size: 5
+ubi0: attaching mtd6
+ubi0: scanning is finished
+ubi0: attached mtd6 (name "rootfs", size 32 MiB)
+ubi0: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi0: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi0: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi0: good PEBs: 256, bad PEBs: 0, corrupted PEBs: 0
+ubi0: user volume: 1, internal volumes: 1, max. volumes count: 128
+ubi0: max/mean erase counter: 0/0, WL threshold: 4096, image sequence number: 1826802183
+ubi0: available PEBs: 69, total reserved PEBs: 187, PEBs reserved for bad PEB handling: 30
+ubi0: background thread "ubi_bgt0d" started, PID 37
+nvt_rtc f0060000.rtc: setting system clock to 2025-09-21 01:53:05 UTC (1758419585)
+UBIFS (ubi0:0): UBIFS: mounted UBI device 0, volume 0, name "rootfs", R/O mode
+UBIFS (ubi0:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+UBIFS (ubi0:0): FS size: 17903616 bytes (17 MiB, 141 LEBs), journal size 4063232 bytes (3 MiB, 32 LEBs)
+UBIFS (ubi0:0): reserved for root: 0 bytes (0 KiB)
+UBIFS (ubi0:0): media format: w4/r0 (latest is w5/r0), UUID DF6DE32A-D7F6-4298-A37D-B12108ECF0B1, small LPT model
+VFS: Mounted root (ubifs filesystem) readonly on device 0:12.
+devtmpfs: mounted
+Freeing unused kernel memory: 184K
+This architecture does not have kernel memory protection.
+Run /linuxrc as init process
+NET: Registered protocol family 1
+ubi2 error: ubi_attach_mtd_dev: More than 64 PEBs are needed for fastmap, sorry.
+ubi2: default fastmap pool size: 8
+ubi2: default fastmap WL pool size: 4
+ubi2: attaching mtd8
+ubi2: scanning is finished
+ubi2: attached mtd8 (name "para", size 8 MiB)
+ubi2: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi2: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi2: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi2: good PEBs: 64, bad PEBs: 0, corrupted PEBs: 0
+ubi2: user volume: 1, internal volumes: 1, max. volumes count: 128
+ubi2: max/mean erase counter: 36/29, WL threshold: 4096, image sequence number: 1016264365
+ubi2: available PEBs: 0, total reserved PEBs: 64, PEBs reserved for bad PEB handling: 30
+ubi2: background thread "ubi_bgt2d" started, PID 44
+UBIFS (ubi2:0): background thread "ubifs_bgt2_0" started, PID 46
+UBIFS (ubi2:0): UBIFS: mounted UBI device 2, volume 0, name "para"
+UBIFS (ubi2:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+UBIFS (ubi2:0): FS size: 2285568 bytes (2 MiB, 18 LEBs), journal size 1015809 bytes (0 MiB, 6 LEBs)
+UBIFS (ubi2:0): reserved for root: 107952 bytes (105 KiB)
+UBIFS (ubi2:0): media format: w5/r0 (latest is w5/r0), UUID 75ACD561-16CA-45DC-BFA9-E656FB723646, small LPT model
+ubi1: default fastmap pool size: 8
+ubi1: default fastmap WL pool size: 4
+ubi1: attaching mtd7
+ubi1: scanning is finished
+ubi1 warning: ubi_eba_init: cannot reserve enough PEBs for bad PEB handling, reserved 15, need 30
+ubi1: attached mtd7 (name "app", size 21 MiB)
+ubi1: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+ubi1: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+ubi1: VID header offset: 2048 (aligned 2048), data offset: 4096
+ubi1: good PEBs: 168, bad PEBs: 0, corrupted PEBs: 0
+ubi1: user volume: 1, internal volumes: 1, max. volumes count: 128
+ubi1: max/mean erase counter: 0/0, WL threshold: 4096, image sequence number: 1681849056
+ubi1: available PEBs: 0, total reserved PEBs: 168, PEBs reserved for bad PEB handling: 15
+ubi1: background thread "ubi_bgt1d" started, PID 48
+UBIFS (ubi1:0): UBIFS: mounted UBI device 1, volume 0, name "app", R/O mode
+UBIFS (ubi1:0): LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+UBIFS (ubi1:0): FS size: 17395712 bytes (16 MiB, 137 LEBs), journal size 2666496 bytes (2 MiB, 21 LEBs)
+UBIFS (ubi1:0): reserved for root: 0 bytes (0 KiB)
+UBIFS (ubi1:0): media format: w4/r0 (latest is w5/r0), UUID 81D06DEF-E55F-44CC-A559-ACFD6CAEC6AB, small LPT model
+zram0: detected capacity change from 0 to 10485760
+random: mkswap: uninitialized urandom read (16 bytes read)
+Adding 10236k swap on /dev/zram0.  Priority:-2 extents:1 across:10236k SSFS
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+nvtim_init_usbhc
+nvtim_init_usbhc assert reset
+R0x40=0x30230001
+ehci-nvtivot f0600000.nvt_usb2host: usbhc-nvtivot
+ehci-nvtivot f0600000.nvt_usb2host: new USB bus registered, assigned bus number 1
+ehci-nvtivot f0600000.nvt_usb2host: irq 51, io mem 0xff600000
+ehci-nvtivot f0600000.nvt_usb2host: USB 2.0 started, EHCI 1.00, overcurrent ignored
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 1 port detected
+cfg80211: Loading compiled-in X.509 certificates for regulatory database
+cfg80211: Loaded X.509 cert 'sforshee: 00b28ddf47aef9cea7'
+platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+cfg80211: failed to load regulatory.db
+nvtmem: loading out-of-tree module taints kernel.
+nvtmem: module license 'Proprietary' taints kernel.
+Disabling lock debugging due to kernel taint
+NVTMEM: 0.0.2
+log.ko v1.4: Aug  2 2023 18:29:50 (mmap 0x83e80000 size 0x21800)
+
+LOG base 0x83dc4c00(ddr0) size 1K (start pointer 0x7f0f0df4)
+PAGE_OFFSET(0x80000000) VMALLOC START(0x85000000) HZ(100)
+nvt_sif_init:
+nvt_sif_probe:f0240000.sif
+nvt_sif_probe:0. resource:0xf0240000 size:0x200
+nvt_sif_probe:IRQ 0. ID44
+nvt_sif_probe:DevID Major:253 minor:10
+nvt_sif_drv_init:
+usb 1-1: new high-speed USB device number 2 using ehci-nvtivot
+
+
+nvt_csi_probe:not fast boot
+nvtmpp_init_mmz: ddr1 pa = 0x4b00000 va = 0x86000000 , size = 0x3500000
+h26x kdrv version: 0.3.9, nvt codec version 0.3.10.0
+nvt_audlib_aac_module_init:
+
+i2c=[0,-1]
+Sensor:0 name:nvt_sen_os05a10
+Sensor:1 name:nvt_sen_os05b10
+sensor 1: [0] det name = nvt_sen_os05a10
+query size = 480
+csi_platform_clk_enable....
+csi_open:CSI HW reset!
+csi_platform_clk_disable....
+get sen = nvt_sen_os05a10
+nvt_md_probe:of_property_read_u32_array failed.
+KDRV_AI_IMPL_VERSION: 01.17.2301131
+nvt_adc_probe: f0260000.adc done voltage 2644 ver 1.02.100
+thermal thermal_zone0: Thermal Sensor probe
+i2c /dev entries driver
+libphy: Fixed MDIO Bus: probed
+nvt_eth_env_probe: get IO MEM 0xfd2b0000
+nvt_eth_env_probe: pinmux detect emb phy 0x0
+nvt_eth_env_probe: DTS emb driving inc 1
+DWC_ETH_QOS: Phy detected at ID/ADDR 0
+libphy: dwc_phy: probed
+nvt_resume: find node
+nvt_resume: led-inv = 0
+nvt_resume: pinmux 0x0
+Supports TSO, SG and TX COE
+Supports RX COE and GRO
+phydev exist: resume phy
+nvt_resume: find node
+nvt_resume: led-inv = 0
+nvt_resume: pinmux 0x0
+DWC_ETH_QOS_yinit: apb_clk 120000000 Hz
+Queue0 Tx fifo size 2048, Rx fifo size 2048
+Disabled JUMBO pkt
+Enabled Rx watchdog timer
+Enabled TSO
+Disabled Rx Split header mode
+phydev exist: start phy
+h26xenc_set_enc_param_syntax:unknown "H264PReduce16Planar"
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x80000018), PAD_DS_GROUP_40
+nvt_gpio f0070000.gpio: HWIRQ: 11 IRQ: 267 ### Both Edge ###
+nvt_mmc f0500000.mmc: cd_gpio in interrupt mode
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x80000018), PAD_DS_GROUP_40
+nvt_mmc f0500000.mmc: Using DMA, 4-bit mode sampling Positive edge, mmc1, pinmux(0x21), caps(0xf)
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x80000018), PAD_DS_GROUP_40
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x80000018), PAD_DS_GROUP_40
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x80000018), PAD_DS_GROUP_40
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x80000018), PAD_DS_GROUP_40
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x80000018), PAD_DS_GROUP_40
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+No Valid DS value.(0x10000024)
+No Valid DS value.(0x10000026)
+No Valid DS value.(0x10000028)
+No Valid DS value.(0x1000002A)
+No Valid DS value.(0x1000002C)
+mmc0: new high speed SDXC card at address aaaa
+mmcblk1: mmc0:aaaa SC128 119 GiB 
+ mmcblk1: p1
+FAT-fs (mmcblk1p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+watchdog: watchdog0: watchdog did not stop!
+nvt_gpio f0070000.gpio: HWIRQ: 6 IRQ: 262 ### Edge rising ###
+nvt_i2c f03a0000.i2c3: i2c transfer timed out(702) jiffies(1)
+nvt_i2c f03a0000.i2c3: i2c_nvtim_busclr
+nvt_i2c f03a0000.i2c3: i2c_nvtim_rst_module: staus 0x10000000
+start_app (475): drop_caches: 3
+random: crng init done
+usbcore: registered new interface driver rtl88x2cu
+phydev exist: resume phy
+nvt_resume: find node
+nvt_resume: led-inv = 0
+nvt_resume: pinmux 0x0
+DWC_ETH_QOS_yinit: apb_clk 120000000 Hz
+Queue0 Tx fifo size 2048, Rx fifo size 2048
+Disabled JUMBO pkt
+Enabled Rx watchdog timer
+Enabled TSO
+Disabled Rx Split header mode
+phydev exist: start phy
+nvt_resume: find node
+nvt_resume: led-inv = 0
+nvt_resume: pinmux 0x0
+start_addr=(0x20000), end_addr=(0x40000), buffer_size=(0x20000), smp_number_max=(16384)
+hd_common_init
+process id 0 _isf_init 0
+venc init: config tile cut if w>2048 (LL fast)
+csi_platform_clk_enable....
+csi_open:CSI HW reset!
+in[0].max_fmt=420c0000 select 2-plane-SHDR by pipe=000000fe!
+vdoprc0 CNN on => stripe LV1, force to LV2!
+vdoprc0 init: stripe LV2 = cut w>2048, GDC = off, 2D_LUT off after cut (LL fast)
+ERR:_isf_vdocap_do_getportstruct() get sen[0] fps failed!(-11)
+ERR:_isf_vdocap_do_getportstruct() VCAP NOT START
+vprc: enable direct func at in[0]
+vprc: enable one-buf func at path 4, (3ndr_ref=1) (max_strp=1)
+vcap: enable direct func at out[0]
+WRN:_isf_vdoprc_oport_do_new() vdoprc0.out[4]! Start single blk mode => blk_id=86014fc0 addr=86015000
+========== AE_CBMSG_PREVIEWSTABLE ==========
+WRN:_vdoprc_oport_set_enable() --- vdoprc0.out[4]! Under single blk mode, IGNORE max_buf=1!
+NET: Registered protocol family 17
+ERR:vos_file_open() open [/mnt/app/isp/t7_dpc.bin] failed, ret -2
+ERR:ife_eng_isr_hw_reg() IFE Decode error2!
