@@ -8,6 +8,8 @@ Tested with
 
 Don't try if there is no LAN and serial connection on the board somewhere. If there is no serial (Doorbell) it is still possible to rescue if you can pull the partitions from the update and merge with the contents of the NAND and rewrite it with some programmer like the T48. Use a spring needle probe for WSON-8*6.
 
+You have to run _unpack.sh, _pack.sh as root (sudo -i). So also run pip or pipx install as root.
+
 ### Unpack
 
 `./_unpack.sh <firmware.pak>`
