@@ -2,7 +2,7 @@
 
 Requirements: pakler, ubi_reader (pip install ...), also mtd-utils.
 
-Use the latest pakler from github, there was a new pak header type since the last release (pip install git+https://github.com/vmallet/pakler.git).
+Use the latest pakler from github, there was a new pak header type since the last release (`pip install git+https://github.com/vmallet/pakler.git`).
 
 Tested with 
 - E1 Zoom 5MP and 8MP
