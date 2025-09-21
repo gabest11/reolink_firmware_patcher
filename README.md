@@ -56,7 +56,7 @@ If you want to access the sd card (/mnt/sda) from the init files, sleep a few se
 
 `./_pack.sh <firmware.pak>`
 
-This will create `<firmware_patched.pak>` where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continously update it with the trick.
+This will create `<firmware_patched.pak>` where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continuously update it with the trick.
 
 ### Unbricking
 
