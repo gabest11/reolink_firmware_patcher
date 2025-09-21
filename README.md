@@ -110,7 +110,7 @@ Real insertation will happen at 0x770000 and 0x2970000, adjusted for NAND's extr
 
 Write it back to the NAND.
 
-You can check the boot log about 0x800 and 0x80 if you are not sure (page size and OOB size). It can vary, depens on the type of the NAND chip.
+You can check the boot log about 0x800 and 0x80 if you are not sure (page size and OOB size). It can vary, depends on the type of the NAND chip.
 
     nand: device found, Manufacturer ID: 0xc8, Chip ID: 0x51
     nand: ESMT GD5F1GQ4UEYIH 1GiB 3.3V
