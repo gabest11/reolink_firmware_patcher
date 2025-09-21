@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# --- Ensure script is run as root ---
+if [ "$EUID" -ne 0 ]; then
+    echo "Error: This script must be run as root."
+    exit 1
+fi
+
 # check input
 if [ -z "$1" ]; then
     echo "Usage: $0 <pak_file>"
@@ -54,18 +60,16 @@ for part in rootfs app; do
             if [[ "$ftype" == *"Squashfs"* ]]; then
                 echo "Extracting SquashFS from $f..."
                 unsquashfs -d "${out_dir}.s" "$f"
-                break
             elif [[ "$ftype" == *"UBI"* || "$ftype" == *"UBIFS"* ]]; then
                 echo "Extracting UBIFS from $f..."                
-                ubireader_extract_files -o "${out_dir}.u" "$f"
+                ubireader_extract_files -k -o "${out_dir}.u" "$f"
                 file_info=$(ubireader_display_info "$f")
-                min_io_size=$(echo "$file_info" | awk '/min_io_size:/ {print $2}')
-                leb_size=$(echo "$file_info" | awk '/leb_size:/ {print $2}')
+                # min_io_size=$(echo "$file_info" | awk '/min_io_size:/ {print $2}')
+                # leb_size=$(echo "$file_info" | awk '/leb_size:/ {print $2}')
                 max_leb_cnt=$(echo "$file_info" | awk '/max_leb_cnt:/ {print $2}')
-                echo "min_io_size=${min_io_size}" > "${out_dir}.ini"
-                echo "leb_size=${leb_size}" >> "${out_dir}.ini"
+                # echo "min_io_size=${min_io_size}" > "${out_dir}.ini"
+                # echo "leb_size=${leb_size}" >> "${out_dir}.ini"
                 echo "max_leb_cnt=${max_leb_cnt}" >> "${out_dir}.ini"
-                break
             else
                 echo "Unknown filesystem type in $f ($ftype)"
                 exit 1
