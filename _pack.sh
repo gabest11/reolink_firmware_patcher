@@ -125,7 +125,7 @@ fi
 firmware_orig="$1"
 
 # Extract original folder number after first dot (existing extraction directory)
-orig_folder_num=$(basename "$firmware_orig" | sed -E 's/^([^.]*\.[0-9]+).*$/\1/')
+orig_folder_num=$(basename "$firmware_orig" | sed -E 's/^([^.]*\.[0-9_]+).*$/\1/')
 folder_name="$orig_folder_num"
 
 # Extract parts of the filename

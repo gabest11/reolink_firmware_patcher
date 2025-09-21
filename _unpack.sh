@@ -15,7 +15,7 @@ fi
 pak_file="$1"
 
 # extract folder name from pak filename: take the number after the first dot
-folder_name=$(echo "$pak_file" | sed -E 's/^([^.]*\.[0-9]+).*$/\1/')
+folder_name=$(echo "$pak_file" | sed -E 's/^([^.]*\.[0-9_]+).*$/\1/')
 
 if [ -d "$folder_name" ]; then
     rm -rf "$folder_name"
