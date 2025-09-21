@@ -108,4 +108,10 @@ Real insertation will happen at 0x770000 and 0x2970000, adjusted for NAND's extr
 
 Write it back to the NAND.
 
+You can check the bootlog about 0x800 and 0x80 if you are not sure (page size and OOB size).
+
+    nand: device found, Manufacturer ID: 0xc8, Chip ID: 0x51
+    nand: ESMT GD5F1GQ4UEYIH 1GiB 3.3V
+    nand: 128 MiB, SLC, erase size: 128 KiB, page size: 2048, OOB size: 128
+
 _extract.py is also provided for completeness.
