@@ -18,6 +18,8 @@ You have to run _unpack.sh, _pack.sh as root (sudo -i). So also run pip or pipx 
 
 You will find the files under the directory named after the beginning of the pak file, until the second dot, for simplicity. Edit all the files you want. 
 
+#### nginx
+
 The nginx config files are a decoy, the executable called `device` in the `app` partition creates it under `/mnt/tmp`, you have directly edit this binary file, there is a big ascii blob in it, just make sure it stays the same size, or else you can go to the Unbricking section. I used Far Manager, it can handle editing and saving binary files as text.
 
 To enable sd card access in the browser, change this:
@@ -50,9 +52,15 @@ Include also works, if there is a lot of stuff to add.
 
     include /etc/nginx/conf.d/*.conf;
 
+#### console
+
 To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
+#### telnet
+
 You can try `telnetd &`, too. But Busybox in my firmware was not compiled with it. (busybox --list)
+
+#### sd card
 
 If you want to access the sd card (`/mnt/sda`) from the init files, sleep a few seconds at the end of `/etc/init.d/rcS` and it will be available. In my experience it takes time for the starting services to mount it.
 
@@ -63,15 +71,7 @@ If you want to access the sd card (`/mnt/sda`) from the init files, sleep a few 
 
 Make sure `boot.sh` has Linux style line endings.
 
-While you are at `/etc/init.d`, you might want to fix `/etc/init.d/K99_Sys`, change `umount /mnt/sd` to `umount /mnt/sda`.
-
-### Pack
-
-`./_pack.sh <firmware.pak>`
-
-This will create `<firmware_patched.pak>` where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continuously update it with the trick.
-
-### Install ttyd
+#### ttyd
 
 First you have to figure out the architecture, my cameras are all `armhf`. If you are not sure, paste the output of `readelf -A 04_rootfs.s/bin/busybox` into chatgpt and it will tell you.
 
@@ -99,6 +99,16 @@ To auto-restart, add it to the end of /etc/inittab.
 The default root password is stored as a hash in `/etc/passwd`, hard to find out. Create a second line with your own username and hash, keep uid=0 gid=0 to be the root user too.
 
     perl -le 'print crypt("password","ab")'
+
+#### other
+
+While you are at `/etc/init.d`, you might want to fix `/etc/init.d/K99_Sys`, change `umount /mnt/sd` to `umount /mnt/sda`.
+
+### Pack
+
+`./_pack.sh <firmware.pak>`
+
+This will create `<firmware_patched.pak>` where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continuously update it with the trick.
 
 ### Unbricking
 
