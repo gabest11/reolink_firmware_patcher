@@ -83,7 +83,9 @@ If it compiles without errors, copy the executable `build/ttyd` to rootfs (or th
 
 To auto-restart, add it to the end of /etc/inittab.
 
-    ::respawn:/bin/ttyd or ::respawn:/bin/ttyd.sh
+    ::respawn:/bin/ttyd
+    ... or if you want to throttle it:
+    ::respawn:/bin/ttyd.sh
 
 /bin/ttyd.sh: (chmod +x /bin/ttyd.sh)
 
