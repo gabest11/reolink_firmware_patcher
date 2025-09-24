@@ -48,7 +48,7 @@ Or if you want to add more, remove all the spaces, there are plenty.
     location /downloadfile/html/ {alias /mnt/sda/; autoindex on; autoindex_localtime on;}
     location /downloadfile/js/ {alias /mnt/sda/; autoindex on; autoindex_localtime on; autoindex_format json;}
 
-Include also works, if there is a lot of stuff to add. If you just want to add locations, place it inside the server block.
+Include also works, if there is a lot of stuff to add. If you just want to add locations, place the include inside the server block.
 
     include /etc/nginx/conf.d/*.conf;
 
