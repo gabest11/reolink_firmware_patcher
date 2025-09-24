@@ -68,7 +68,7 @@ First you have to figure out the architecture, my cameras are all `armhf`. If yo
 
 If it compiles without errors, copy the executable `build/ttyd` to rootfs (or the sd card) and add `/path/to/ttyd/ttyd -W /bin/login &` to the end of your init script. Or just call /mnt/sda/boot.sh and put it there, then you don't have to update the firmware every time.
 
-The default root password is stored as a hash in /etc/passwd, hard to find out. Just create a second line with your own username and hash, keep uid=0 gid=0 to be the root user too.
+The default root password is stored as a hash in `/etc/passwd`, hard to find out. Create a second line with your own username and hash, keep uid=0 gid=0 to be the root user too.
 
     perl -le 'print crypt("password","ab")'
 
