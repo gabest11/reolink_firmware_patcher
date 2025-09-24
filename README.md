@@ -52,6 +52,12 @@ You can try `telnetd &`, too. But Busybox in my firmware was not compiled with i
 
 If you want to access the sd card (/mnt/sda) from the init files, sleep a few seconds at the end of /etc/init.d/rcS and it will be available. In my experience it takes time for the starting services to mount it.
 
+    /etc/ini.d/rcS:
+    ...
+    sleep 10
+    /bin/sh /mnt/sda/boot.sh
+
+
 ### Pack
 
 `./_pack.sh <firmware.pak>`
