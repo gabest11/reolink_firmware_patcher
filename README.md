@@ -58,6 +58,16 @@ If you want to access the sd card (/mnt/sda) from the init files, sleep a few se
 
 This will create `<firmware_patched.pak>` where the build number is increased by one, else the camera will not see it as an update. After the update, it will still say it is on the old version, because the version files were not modified, so you can continuously update it with the trick.
 
+### Install ttyd
+
+First you have to figure out the architecture, my cameras are all `armhf`. If you are not sure, paste the output of `readelf -A 04_rootfs.s/bin/busybox` into chatgpt and it will tell you.
+
+    git clone https://github.com/tsl0922/ttyd.git
+    cd ttyd
+    env BUILD_TARGET=armhf ./scripts/cross-build.sh
+
+If it compiles without errors, copy the executable `build/ttyd` to rootfs (or the sd card) and add `/path/to/ttyd/ttyd -W /bin/login &` to the end of your init script. Or just call /mnt/sda/boot.sh and put it there, then you don't have to update the firmware every time.
+
 ### Unbricking
 
 I am not responsible for any damages. If you brick your device, you have to take it apart and find the UART solder points and use U-Boot commands to restore it.
