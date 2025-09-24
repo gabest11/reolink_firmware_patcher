@@ -81,7 +81,7 @@ First you have to figure out the architecture, my cameras are all `armhf`. If yo
 
 If it compiles without errors, copy the executable `build/ttyd` to rootfs (or the sd card) and add `/path/to/ttyd/ttyd -W /bin/login &` to the end of your init script. Or just call `/mnt/sda/boot.sh` and put it there, then you don't have to update the firmware every time. 
 
-To auto-restart, add it to the end of /etc/inittab.
+To auto-restart, because it crashes a lot, add it to the end of /etc/inittab.
 
     ::respawn:/bin/ttyd
     ... or if you want to throttle it:
