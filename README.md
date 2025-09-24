@@ -22,29 +22,33 @@ The nginx config files are a decoy, the executable called `device` in the `app` 
 
 To enable sd card access in the browser, change this:
 
-        location /downloadfile/ {
-            internal;
-            limit_conn one 1;
-            limit_rate 1024k;
-            alias /mnt/sda/;
-        }
+    location /downloadfile/ {
+        internal;
+        limit_conn one 1;
+        limit_rate 1024k;
+        alias /mnt/sda/;
+    }
 
 To this: (add as many spaces as needed to balance the missing characters)
 
-        location /downloadfile/ {
-            autoindex on;
-            autoindex_localtime on;
-            alias /mnt/sda/;
-                                       
-        }
+    location /downloadfile/ {
+        autoindex on;
+        autoindex_localtime on;
+        alias /mnt/sda/;
+                                   
+    }
 
 Then you will be able to just click on any file and view it. It's a lot faster this way.
 
 Or if you want to add more, remove all the spaces, there are plenty.
 
-        location /downloadfile/ {internal;limit_conn one 1;limit_rate 1024k;alias /mnt/sda/;}
-        location /downloadfile/html/ {alias /mnt/sda/; autoindex on; autoindex_localtime on;}
-        location /downloadfile/js/ {alias /mnt/sda/; autoindex on; autoindex_localtime on; autoindex_format json;}
+    location /downloadfile/ {internal;limit_conn one 1;limit_rate 1024k;alias /mnt/sda/;}
+    location /downloadfile/html/ {alias /mnt/sda/; autoindex on; autoindex_localtime on;}
+    location /downloadfile/js/ {alias /mnt/sda/; autoindex on; autoindex_localtime on; autoindex_format json;}
+
+Include also works, if there is a lot of stuff to add.
+
+    include /etc/nginx/conf.d/*.conf;
 
 To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
@@ -75,7 +79,20 @@ First you have to figure out the architecture, my cameras are all `armhf`. If yo
     cd ttyd
     env BUILD_TARGET=armhf ./scripts/cross-build.sh
 
-If it compiles without errors, copy the executable `build/ttyd` to rootfs (or the sd card) and add `/path/to/ttyd/ttyd -W /bin/login &` to the end of your init script. Or just call /mnt/sda/boot.sh and put it there, then you don't have to update the firmware every time.
+If it compiles without errors, copy the executable `build/ttyd` to rootfs (or the sd card) and add `/path/to/ttyd/ttyd -W /bin/login &` to the end of your init script. Or just call /mnt/sda/boot.sh and put it there, then you don't have to update the firmware every time. 
+
+To auto-restart, add it to the end of /etc/inittab.
+
+    ::respawn:/bin/ttyd or ::respawn:/bin/ttyd.sh
+
+/bin/ttyd.sh: (chmod +x /bin/ttyd.sh)
+
+    #!/bin/sh
+    while true; do
+        /bin/ttyd -W /bin/login
+        echo "ttyd crashed with exit code $? — restarting in 5s..." >&2
+        sleep 5
+    done
 
 The default root password is stored as a hash in `/etc/passwd`, hard to find out. Create a second line with your own username and hash, keep uid=0 gid=0 to be the root user too.
 
