@@ -79,7 +79,7 @@ First you have to figure out the architecture, my cameras are all `armhf`. If yo
     cd ttyd
     env BUILD_TARGET=armhf ./scripts/cross-build.sh
 
-If it compiles without errors, copy the executable `build/ttyd` to rootfs (or the sd card) and add `/path/to/ttyd/ttyd -W /bin/login &` to the end of your init script. Or just call /mnt/sda/boot.sh and put it there, then you don't have to update the firmware every time. 
+If it compiles without errors, copy the executable `build/ttyd` to rootfs (or the sd card) and add `/path/to/ttyd/ttyd -W /bin/login &` to the end of your init script. Or just call `/mnt/sda/boot.sh` and put it there, then you don't have to update the firmware every time. 
 
 To auto-restart, add it to the end of /etc/inittab.
 
