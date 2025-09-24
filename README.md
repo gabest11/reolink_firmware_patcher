@@ -59,6 +59,8 @@ If you want to access the sd card (/mnt/sda) from the init files, sleep a few se
 
 Make sure boot.sh has Linux style line endings.
 
+While you are at `/etc/init.d`, you might want to fix `/etc/init.d/K99_Sys`, change `umount /mnt/sd` to `umount /mnt/sda`.
+
 ### Pack
 
 `./_pack.sh <firmware.pak>`
