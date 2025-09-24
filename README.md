@@ -57,6 +57,7 @@ If you want to access the sd card (/mnt/sda) from the init files, sleep a few se
     sleep 10
     /bin/sh /mnt/sda/boot.sh
 
+Make sure boot.sh has Linux style line endings.
 
 ### Pack
 
