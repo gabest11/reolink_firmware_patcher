@@ -18,7 +18,7 @@ You have to run _unpack.sh, _pack.sh as root (sudo -i). So also run pip or pipx 
 
 You will find the files under the directory named after the beginning of the pak file, until the second dot, for simplicity. Edit all the files you want. 
 
-The nginx config files are a decoy, the executable called `device` in the `app` partition creates it under `/mnt/tmp`, you have directly edit this binary file, there is a big ascii blob in it, just make sure it stays the same size. I used Far Manager, it can handle editing and saving binary files as text.
+The nginx config files are a decoy, the executable called `device` in the `app` partition creates it under `/mnt/tmp`, you have directly edit this binary file, there is a big ascii blob in it, just make sure it stays the same size, or else you can go to the Unbricking section. I used Far Manager, it can handle editing and saving binary files as text.
 
 To enable sd card access in the browser, change this:
 
