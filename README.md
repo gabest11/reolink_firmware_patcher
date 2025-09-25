@@ -117,7 +117,7 @@ Run this to generate the hash.
 
     perl -le 'print crypt("password","ab")'
 
-Default port is 7681, but you can use a reverse proxy with nginx:
+Default port is 7681, but you can use a reverse proxy with nginx, this way there is no need to let another port through the firewall for remote access.
 
     location /ttyd {
         proxy_pass http://127.0.0.1:7681/;
