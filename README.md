@@ -16,7 +16,13 @@ You have to run _unpack.sh, _pack.sh as root (sudo -i). So also run pip or pipx 
 
 `./_unpack.sh <firmware.pak>`
 
-You will find the files under the directory named after the beginning of the pak file, until the second dot, for simplicity. Edit all the files you want. 
+You will find the files under the directory named after the beginning of the pak file, until the second dot, for simplicity.
+
+    ./_unpack.sh IPC_566SD664M5MP.4417_2412122178.E1-Zoom.5MP.WIFI7.PTZ.REOLINK.pak
+    =>
+    IPC_566SD664M5MP.4417_2412122178/...
+
+Edit all the files you want. 
 
 #### nginx
 
