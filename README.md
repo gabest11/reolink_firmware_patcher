@@ -48,11 +48,15 @@ To this: (add as many spaces as needed to balance the missing characters)
 
 Then you will be able to just click on any file and view it. It's a lot faster this way.
 
+<img width="494" height="244" alt="image" src="https://github.com/user-attachments/assets/91edc0f8-2d1a-48c8-98f0-4dae388eaf8d" />
+
 Or if you want to add more, remove all the spaces, there are plenty.
 
     location /downloadfile/ {internal;limit_conn one 1;limit_rate 1024k;alias /mnt/sda/;}
     location /downloadfile/html/ {alias /mnt/sda/; autoindex on; autoindex_localtime on;}
     location /downloadfile/js/ {alias /mnt/sda/; autoindex on; autoindex_localtime on; autoindex_format json;}
+
+<img width="472" height="191" alt="image" src="https://github.com/user-attachments/assets/86624d67-a000-49e3-8239-a4cacfac7bbf" />
 
 Include also works, if there is a lot of stuff to add. If you just want to add locations, place the include inside the server block.
 
