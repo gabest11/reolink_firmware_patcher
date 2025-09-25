@@ -110,6 +110,11 @@ To auto-restart (because it crashes a lot!), add it to the end of /etc/inittab.
 
 The default root password is stored as a hash in `/etc/passwd`, hard to find out. Create a second line with your own username and hash, keep uid=0 gid=0 to be the root user too.
 
+    root:XF4sg5T82tV4k:0:0:root:/root:/bin/sh
+    gabest:<PASSWORD HASH>:0:0:gabest:/root:/bin/sh
+
+Run this to generate the hash.
+
     perl -le 'print crypt("password","ab")'
 
 Default port is 7681, but you can use a reverse proxy with nginx:
@@ -156,7 +161,6 @@ Download and split the firmware file into parts, use [pakler](https://pypi.org/p
 Find `rootfs` and `app` and convert them from UBI to squashfs with `ubireader_extract_images`. Do not directly write UBI with `ubi write`.
 Start a TFTP server in the directory (192.168.1.11/24).
 Connect to the camera and mash ctrl+c right after boot, it will give you a command prompt.
-
 
     setenv mtdparts 'mtdparts=spi_nand.0:0x40000@0x0(loader),0x40000@0x40000(fdt),0x100000@0x80000(uboot),0x400000@0x180000(kernel),0xf00000@0x580000(rootfs),0xb00000@0x1480000(app),0x800000@0x1f80000(para),0x80000@0x2380000(sp),0x80000@0x2400000(ext_para),0x1b80000@0x2480000(download)'
 
