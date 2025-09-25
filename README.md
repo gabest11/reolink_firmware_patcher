@@ -66,7 +66,7 @@ Include also works, if there is a lot of stuff to add. If you just want to add l
 
 To enable the console on serial, add `ttyS0::respawn:/bin/sh` to `/etc/inittab`.
 
-<img width="992" height="467" alt="image" src="https://github.com/user-attachments/assets/4f0abe09-7cef-4037-8e1d-4aec8101e3bc" />
+<img width="496" height="233" alt="image" src="https://github.com/user-attachments/assets/4f0abe09-7cef-4037-8e1d-4aec8101e3bc" />
 
 #### telnet
 
