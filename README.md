@@ -128,6 +128,8 @@ Default port is 7681, but you can use a reverse proxy with nginx:
         proxy_send_timeout 86400;
     }
 
+<img width="469" height="158" alt="image" src="https://github.com/user-attachments/assets/f163fdbc-f68f-494f-b5f0-14b5721b3978" />
+
 #### other
 
 While you are at `/etc/init.d`, you might want to fix `/etc/init.d/K99_Sys`, change `umount /mnt/sd` to `umount /mnt/sda`.
