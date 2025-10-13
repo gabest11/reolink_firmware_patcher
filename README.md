@@ -182,7 +182,7 @@ There may be other partitions, restore whichever you messed with, but not all ar
 
 If the app.sqsh file is too large, delete the non-english audio files.
 
-#### Another example to unbrick the Doorbell Wifi/PEO (not with the battery) by rewriting the NAND with a programmer.
+#### Another example to unbrick the Doorbell Wifi/POE (not with the battery) by rewriting the NAND with a programmer.
 
 Read the contents of the NAND into a file (firmware.bin). It should be 142606336 bytes.
 
